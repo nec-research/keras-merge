@@ -1,0 +1,25 @@
+{
+	"name":				"keras-merge",
+	"version":			"1.0",
+	"summary":			"Allows to merge two keras.Models",
+	"readme":			"README.md",
+	"author":			"Nicolas Weber",
+	"author-email":		"nicolas.weber@neclab.eu",
+	"license":			"3 BSD-License",
+	"requires-python":	">=3.7",
+	"download-url":		"https://github.com/nec-research/keras-merge/tags",
+	"classifier": [
+		"License :: OSI Approved :: BSD License",
+		"Programming Language :: Python :: 3 :: Only"
+	],
+	"packages": [
+		"keras_merge"
+	],
+	"payload": [
+		"LICENSE"
+	],
+	"requires-dist": [
+		"tensorflow",
+		"keras"
+	]
+}
