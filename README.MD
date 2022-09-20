@@ -34,8 +34,8 @@ B = model(False)
 C = km.merge(A, B,				# models
 	[*A.inputs, B.inputs[0]],	# inputs
 	B.outputs,					# outputs
-	[							# mapping
-		(B.inputs[1], A.outputs[0])
+	[							# mapping [(src->dst), ...]
+		(A.outputs[0], B.inputs[1])
 	]
 )
 
@@ -60,5 +60,5 @@ plot_model(C, to_file='C.png')
 ```bash
 pip3 install illyrian
 illyrian keras_merge.json
-pip3 install keras_merge-*-py3-none-any.whl
+pip3 install keras_merge-1.0-py3-none-any.whl
 ```

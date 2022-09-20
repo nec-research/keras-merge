@@ -13,7 +13,7 @@ def model(mul):
 A = model(True)
 B = model(False)
 
-C = km.merge(A, B, [*A.inputs, B.inputs[0]], B.outputs, [(B.inputs[1], A.outputs[0])])
+C = km.merge(A, B, [*A.inputs, B.inputs[0]], B.outputs, [(A.outputs[0], B.inputs[1])])
 
 a = np.random.rand(1, 2, 3)
 b = np.random.rand(1, 2, 3)

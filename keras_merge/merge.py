@@ -45,10 +45,10 @@ def merge(
 	clone_model(A)
 
 	assert isinstance(mapping, (list, tuple))
-	for k, v in mapping:
-		assert isinstance(k, KerasTensor)
-		assert isinstance(v, KerasTensor)
-		refs[k.ref()] = refs.get(v.ref())
+	for src, dst in mapping:
+		assert isinstance(src, KerasTensor)
+		assert isinstance(dst, KerasTensor)
+		refs[dst.ref()] = refs.get(src.ref())
 
 	clone_model(B)
 
