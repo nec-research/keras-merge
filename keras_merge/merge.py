@@ -2,9 +2,8 @@ __all__ = ['merge']
 
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Layer, InputLayer, Concatenate
-from typing import Optional, List, Dict, Tuple, Union, Any
+from typing import List, Dict, Tuple, Union, Any
 from keras.engine.keras_tensor import KerasTensor
-from keras.utils.object_identity import Reference
 
 def merge(
 		A: Model,
@@ -12,7 +11,7 @@ def merge(
 		inputs: Union[List[KerasTensor], Tuple[KerasTensor], Dict[str, KerasTensor], KerasTensor],
 		outputs: Union[tuple, list, dict, KerasTensor],
 		mapping: Union[tuple, list],
-		**kwargs: Optional[Dict[str, Any]]) -> Model:
+		**kwargs: Dict[str, Any]) -> Model:
 	def clone(layer: Layer) -> Layer:
 		assert isinstance(layer, Layer)
 		return layer.__class__.from_config(layer.get_config())
@@ -56,5 +55,5 @@ def merge(
 	new_inputs  = deref(inputs)
 	new_outputs = deref(outputs)
 
-	assert kwargs is None or isinstance(kwargs, dict)
+	assert isinstance(kwargs, dict)
 	return Model(inputs=new_inputs, outputs=new_outputs, **kwargs)

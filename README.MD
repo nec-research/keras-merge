@@ -1,6 +1,7 @@
 # Keras Merge
 
-Keras Merge is a helper script, that enables to merge two instances of ```keras.Model``` together.
+Keras Merge allows to merge two Keras model instances without having access to
+their generating functions.
 
 ## Release Notes
 <table>
