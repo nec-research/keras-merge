@@ -50,9 +50,9 @@ f = C([a, b, c])
 print("A+B:    ", np.reshape(e, -1))
 print("Merged: ", np.reshape(f, -1))
 
-plot_model(A, to_file='A.png', show_shapes=True)
-plot_model(B, to_file='B.png', show_shapes=True)
-plot_model(C, to_file='C.png', show_shapes=True)
+plot_model(A, to_file='A.png')
+plot_model(B, to_file='B.png')
+plot_model(C, to_file='C.png')
 ```
 
 ## How to build
