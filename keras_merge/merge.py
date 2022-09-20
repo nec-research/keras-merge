@@ -11,7 +11,7 @@ def merge(
 		B: Model,
 		inputs: Union[List[KerasTensor], Tuple[KerasTensor], Dict[str, KerasTensor], KerasTensor],
 		outputs: Union[tuple, list, dict, KerasTensor],
-		mapping: Dict[Reference, Reference],
+		mapping: Union[tuple, list],
 		**kwargs: Optional[Dict[str, Any]]) -> Model:
 	def clone(layer: Layer) -> Layer:
 		assert isinstance(layer, Layer)
@@ -45,11 +45,11 @@ def merge(
 
 	clone_model(A)
 
-	assert isinstance(mapping, dict)
-	for k, v in mapping.items():
-		assert isinstance(k, Reference)
-		assert isinstance(v, Reference)
-		refs[k] = refs.get(v)
+	assert isinstance(mapping, (list, tuple))
+	for k, v in mapping:
+		assert isinstance(k, KerasTensor)
+		assert isinstance(v, KerasTensor)
+		refs[k.ref()] = refs.get(v.ref())
 
 	clone_model(B)
 
