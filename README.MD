@@ -31,7 +31,13 @@ def model(mul: bool) -> Model:
 
 A = model(True)
 B = model(False)
-C = km.merge(A, B, [*A.inputs, B.inputs[0]], B.outputs, [(B.inputs[1].ref(), A.outputs[0].ref())])
+C = km.merge(A, B,				# models
+	[*A.inputs, B.inputs[0]],	# inputs
+	B.outputs,					# outputs
+	[							# mapping
+		(B.inputs[1], A.outputs[0])
+	]
+)
 
 a = np.random.rand(1, 2, 3)
 b = np.random.rand(1, 2, 3)
