@@ -12,6 +12,7 @@ def merge(
 		outputs: Union[tuple, list, dict, KerasTensor],
 		mapping: Union[tuple, list],
 		**kwargs: Dict[str, Any]) -> Model:
+
 	def clone(layer: Layer) -> Layer:
 		assert isinstance(layer, Layer)
 		return layer.__class__.from_config(layer.get_config())
@@ -36,11 +37,10 @@ def merge(
 				oref	= l.output.ref()
 
 				if isinstance(l, InputLayer):
-					refs[oref] = cl.output
+					refs[oref]	= cl.output
 				else:
-					cinputs = deref(node.keras_inputs)
-					if isinstance(l, Concatenate):	refs[oref] = cl( cinputs)
-					else:							refs[oref] = cl(*cinputs)
+					cinputs		= deref(node.keras_inputs)
+					refs[oref]	= cl(cinputs) if isinstance(l, Concatenate) else cl(*cinputs)
 
 	clone_model(A)
 
