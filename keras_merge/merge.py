@@ -1,7 +1,7 @@
 __all__ = ['merge']
 
-from tensorflow.keras import Model
-from tensorflow.keras.layers import Layer, InputLayer, Concatenate
+from keras import Model
+from keras.layers import Layer, InputLayer, Concatenate
 from typing import List, Dict, Tuple, Union, Any
 from keras.engine.keras_tensor import KerasTensor
 

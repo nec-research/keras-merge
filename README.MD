@@ -18,7 +18,7 @@ Initial Release
 ```python
 import keras_merge as km
 
-from tensorflow.keras import Model, Input
+from keras import Model, Input
 import numpy as np
 from keras.utils import plot_model
 
