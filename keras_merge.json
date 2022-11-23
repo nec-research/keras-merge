@@ -1,6 +1,6 @@
 {
 	"name":				"keras-merge",
-	"version":			"1.0",
+	"version":			"1.1",
 	"summary":			"Allows to merge two keras.Models",
 	"readme":			"README.MD",
 	"author":			"Nicolas Weber",
