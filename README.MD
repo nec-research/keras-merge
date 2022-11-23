@@ -3,9 +3,21 @@
 Keras Merge allows to merge two Keras model instances without having access to
 their generating functions.
 
+[![Github](https://img.shields.io/github/v/tag/nec-research/keras-merge?display_name=tag&sort=semver)](https://github.com/sx-aurora/veda)
+[![PyPI](https://img.shields.io/pypi/v/keras-merge)](https://pypi.org/project/keras-merge)
+[![License](https://img.shields.io/pypi/l/keras-merge)](https://pypi.org/project/keras-merge)
+![Python Versions](https://img.shields.io/pypi/pyversions/keras-merge)
+![Linux](https://svgshare.com/i/Zhy.svg)
+![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+![Maintenance](https://img.shields.io/pypi/dm/keras-merge)
+
 ## Release Notes
 <table>
 <tr><th>Version</th><th>Comment</th></tr>
+
+<tr><td>v1.1</td><td>
+Copying over weights from source models to merged model (active by default, disable using: <code>km.merge(..., copy_weights=False)</code>)
+</td></tr>
 
 <tr><td>v1.0</td><td>
 Initial Release

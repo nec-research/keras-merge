@@ -11,6 +11,8 @@ def merge(
 		inputs: Union[List[KerasTensor], Tuple[KerasTensor], Dict[str, KerasTensor], KerasTensor],
 		outputs: Union[tuple, list, dict, KerasTensor],
 		mapping: Union[tuple, list],
+		*, # no more positional args allowed
+		copy_weights=True,
 		**kwargs: Dict[str, Any]) -> Model:
 
 	def clone(layer: Layer) -> Layer:
@@ -56,4 +58,14 @@ def merge(
 	new_outputs = deref(outputs)
 
 	assert isinstance(kwargs, dict)
-	return Model(inputs=new_inputs, outputs=new_outputs, **kwargs)
+	C = Model(inputs=new_inputs, outputs=new_outputs, **kwargs)
+
+	if copy_weights:
+		def _copy_weights(model):
+			for l in model.layers:
+				weights = l.get_weights()
+				if len(weights):
+					C.get_layer(name=l.name).set_weights(weights)
+		_copy_weights(A)
+		_copy_weights(B)
+	return C
